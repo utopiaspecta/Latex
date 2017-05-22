@@ -1,0 +1,295 @@
+\documentclass[a4,11pt]{article}
+\usepackage{amsfonts}
+
+%==========数学符号的宏包=======
+
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{amsfonts,amssymb}
+\usepackage{amsmath}
+\usepackage{CJK}
+\newcommand{\hei}{\CJKfamily{hei}}
+\newcommand{\e}{\mathbf{E}}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\enq}{\end{equation}}
+\newcommand{\st}{\theta}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Remark}{Remark}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Corollary}{Corollary}[section]
+\newcommand{\Rks}{{\bf Remarks:}\ }
+\newtheorem{lmm}{Lemma}[section]
+\newcommand{\benu}{\begin{enumerate}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\beqan}{\begin{eqnarray*}}
+\newcommand{\eay}{\end{array}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\eenu}{\end{enumerate}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\eeqan}{\end{eqnarray*}}
+\newcommand{\bib}{\bibitem}
+\newcommand{\br}{\begin{Remark}}
+\newcommand{\er}{\end{Remark}}
+\newcommand{\ii}{\int_{\cR}}
+\newcommand{\wh}{\rule[0.5ex]{5em}{0.1ex} \  }
+\newcommand{\strv}{\rule[-1.5ex]{0mm}{5ex}}
+\newcommand{\cN}{{\sl I\!N}}
+\newcommand{\cR}{{\sl I\!R}}
+\newcommand{\tex}{\textstyle}
+\newcommand{\f}{\frac}
+\newcommand{\s}{\sup_{0\le \tau \le t}}
+\newcommand{\lw}{L^{\infty}}
+\newcommand{\al}{\alpha}
+\newtheorem{cor}{Corollary}[section]
+\newcommand{\sut}{\sup\limits_{0\le s\le t}\|\theta(s)\|_{L^\infty}}
+\newcommand{\itt}{\int_0^t}
+\newcommand{\bqa}{\begin{eqnarray}}
+\newcommand{\eqa}{\end{eqnarray}}
+\newcommand{\bqw}{\begin{eqnarray*}}
+\newcommand{\eqw}{\end{eqnarray*}}
+\newcommand{\no}{\noindent}
+\newcommand{\non}{\nonumber}
+\newcommand{\bea}{\begin{array}{cc}}
+\newcommand{\ena}{\end{array}}
+\def\dis{\displaystyle}
+\def\scr{\scriptstyle}
+
+%==========使分式字体正常大小=====
+\newcommand{\D}{\displaystyle}
+\newcommand{\DF}[2]{\frac{\D#1}{\D#2}}
+%定义字体及字号
+%\theoremstyle{plain}
+
+
+
+\newcommand\kaishu{\CJKfamily{kai}}
+\newcommand\heiti{\CJKfamily{hei}}
+\newcommand\songti{\CJKfamily{song}}
+\newcommand\baiti{\CJKfamily{bai}}
+\newcommand{\fangsong}{\CJKfamily{fs}}
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{8.0pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+\usepackage{CJK,indentfirst,amsmath,amsfonts,amssymb,amsthm,cite}
+\usepackage[dvips]{graphics}%图形宏包
+\usepackage[dvips]{color}%色彩宏包
+\renewcommand\refname{\xiaowuhao\heiti {参考文献：}}
+\setlength{\parindent}{2em}
+\setlength{\jot}{4.5pt}%调节多行公式行间距
+\usepackage{fancyhdr}%页眉宏包
+\usepackage{ifthen}%这个宏包提供逻辑判断命令
+\usepackage{cases}
+
+
+%==========文档开始===============
+\begin{document}
+\begin{CJK*}{GBK}{song}
+\CJKtilde  %==================================================== 重新定义~ 的空白距离
+$Peng(2005b,2006a,b)$提出了$G-$布朗运动，$G-$分布和相关的$It\widehat{o}$ 类型的随机积分概念，在此基础上他们给出了$G-$ 期望的定义。
+\\($G-$期望).假设过程$X(\cdot)$满足$SDE$
+\begin{equation}
+dX_s=b(s,X_s,v_s)ds+\sigma(s,X_s,v_s)dB_s
+\end{equation}
+$u(t,X_t)$满足$PDE$
+\begin{equation}
+\begin{cases}
+\frac{\partial u}{\partial t}+G(u,Du,D^2u)=0
+\\u(T,x) = -\Phi(x) = -(x_T-K)^+.
+\end{cases}
+\end{equation}
+其中
+$$
+G:R\times R\times R\mapsto R,
+$$
+并且
+$$
+G(u,p,A)=\sup_{v(\cdot)}\{a(v)A+f(p,v)+L(u,v)\}
+$$
+其中$a:\mathbb{R}\rightarrow \mathbb{R},f:\mathbb{R}\rightarrow \mathbb{R},L:\mathbb{R}\rightarrow \mathbb{R}$，从而定义$\Phi(X_T)$的$G-$期望
+$$
+\mathbb{E}_{t,T}^G[\Phi(X_T)]:=u(T,X_t).
+$$
+在$G-$期望基础上，他们进一步定义了更具体$G-$ 风险度量。
+\\ 定义$\Phi(X_T)$的$G-$风险度量为
+\begin{equation}
+\rho_{t,T}^G[\Phi(X_T)]:= u(t,X_t)
+\end{equation}
+$u(t,X_t)$是如下$PDE$的解
+\begin{equation}
+\begin{cases}
+\frac{\partial u}{\partial t}+\frac{1}{2}(\overline{\sigma}^2x^2u_{xx}^+ - \underline{\sigma}^2 x^2 u_{xx}^-) + \mu x|u_x| = 0,
+\\u(T,x) = -\Phi(x) = -(x_T-K)^+.
+\end{cases}
+\end{equation}
+其中$ \overline{\sigma},\underline{\sigma},\mu$ 是$G-$风险度量的参数。
+
+ 1、显式差分格式：
+\par 令$\Delta t = T /N,\Delta x$是$x$方向的步长.考虑这样一个网格形式
+$\{t_n = n\Delta t, x_j = j\Delta x, n = 1,2,\cdots,N+1, j = 1,2,\cdots,J+1\}$。 令
+\begin{center}
+$u(x_j, t_n) = u_j^n$
+\end{center}
+进行如下的差分离散化：
+\begin{eqnarray}
+\frac{\partial u}{\partial t}|_(u_j,t_{n+1}) &=:&\frac{u_{j}^{n+1} -u_j^n}{\Delta t} + O(\Delta t)\nonumber\\
+\frac{\partial u}{\partial x}|_(u_j,t_{n+1}) &=:&\frac{u_{j+1}^{n+1} -u_{j-1}^{n+1}}{2\Delta x} + O(\Delta x)\nonumber\\
+\frac{{\partial}^2 u}{\partial x^2}|_(u_j,t_{n+1}) &=:&\frac{u_{j+1}^{n+1} +u_{j-1}^{n+1} -2u_j^{n+1}}{\Delta x^2} + O(\Delta x^2)
+\end{eqnarray}
+我们知道，$u_{xx}^+ = \max\{u_{xx},0\}$, 又可以表示为 $u_{xx}^+ = u_{xx}I_{\{u_{xx}\geq0\}}$;同理$u_{xx}^- = -u_{xx}I_{\{u_{xx}<0\}}$。
+另外，关于$|u_x|$，对其进行如下转化：
+\begin{eqnarray}
+|u_x|&=& \max\{u_x,0\}-\min\{u_x,0\}\nonumber\\
+&=&u_x(I_{\{u_x\geq0\}}-I_{\{u_x<0\}})\nonumber
+\end{eqnarray}
+为了表示方便，记$I_{\{u_{xx}\geq0\}}= I_1,I_{\{u_{xx}<0\}}=I_2,I_{\{u_x\geq0\}}= I_3,I_{\{u_x<0\}}= I_4$;
+因此，方程$(1)$的显式差分格式可以表示为：
+\begin{eqnarray}
+\frac{u_{j+1}^{n+1} -u_j^n}{\Delta t}+\frac{1}{2}(j\Delta x)^2\frac{(u_{j+1}^{n+1} +u_{j-1}^{n+1} -2u_j^{n+1})}{\Delta x^2}(\overline{\sigma}^2I_1 +\underline{\sigma}^2I_2)\nonumber\\
++\mu(j\Delta x)\frac{u_{j+1}^{n+1} -u_{j-1}^{n+1}}{2\Delta x}(I_3-I_4) = 0
+\end{eqnarray}
+
+
+方程$(3)$可以简化为：
+\begin{equation}
+\frac{u_{j+1}^{n+1} -u_j^n}{\Delta t}+A(u_{j+1}^{n+1} +u_{j-1}^{n+1} -2u_j^{n+1})+B(u_{j+1}^{n+1} -u_{j-1}^{n+1}) = 0
+\end{equation}
+其中
+$A=\frac{j^2(\overline{\sigma}^2I_1 +\underline{\sigma}^2I_2)}{2},B=\frac{\mu j(I_3-I_4)}{2}$。
+\\于是得到
+\begin{equation}
+u_j^n=u_{j-1}^{n+1}(A-B)\Delta t+u_j^{n+1}(1-2A\Delta t)+u_{j+1}^{n+1}(A+B)\Delta t
+\end{equation}
+
+2、隐式差分格式
+\par 同样令$\Delta t = T /N,\Delta x$是$x$方向的步长.考虑这样一个网格形式
+$\{t_n = n\Delta t, x_j = j\Delta x, n = 1,2,\cdots,N+1, j = 1,2,\cdots,J+1\}.$ 令
+\begin{center}
+$u(x_j, t_n) = u_j^n$
+\end{center}
+进行如下的差分离散化：
+\begin{eqnarray}
+\frac{\partial u}{\partial t}|_(u_j,t_{n+1}) &=:&\frac{u_j^{n+1} -u_j^n}{\Delta t} + O(\Delta t)\nonumber\\
+\frac{\partial u}{\partial x}|_(u_j,t_{n+1}) &=:&\frac{u_{j+1}^n -u_{j-1}^n}{2\Delta x} + O(\Delta x)\nonumber\\
+\frac{{\partial}^2 u}{\partial x^2}|_(u_j,t_{n+1}) &=:&\frac{u_{j+1}^{n} +u_{j-1}^{n} -2u_j^{n}}{\Delta x^2} + O(\Delta x^2)
+\end{eqnarray}
+我们知道，$u_{xx}^+ = \max\{u_{xx},0\}$, 又可以表示为 $u_{xx}^+ = u_{xx}I_{\{u_{xx}\geq0\}}$;同理$u_{xx}^- = -u_{xx}I_{\{u_{xx}<0\}}$。
+另外，关于$|u_x|$，对其进行如下转化：
+\begin{eqnarray}
+|u_x|&=& \max\{u_x,0\}-\min\{u_x,0\}\nonumber\\
+&=&u_x(I_{\{u_x\geq0\}}-I_{\{u_x<0\}})\nonumber
+\end{eqnarray}
+为了表示方便，记$I_{\{u_{xx}\geq0\}}= I_1,I_{\{u_{xx}<0\}}=I_2,I_{\{u_x\geq0\}}= I_3,I_{\{u_x<0\}}= I_4$;
+因此，方程$(1)$的隐式差分格式可以表示为：
+\begin{eqnarray}
+\frac{u_{j}^{n+1} -u_j^n}{\Delta t}+\frac{1}{2}(j\Delta x)^2\frac{(u_{j+1}^{n} +u_{j-1}^{n} -2u_j^{n})}{\Delta x^2}(\overline{\sigma}^2I_1 +\underline{\sigma}^2I_2)\nonumber\\
++\mu(j\Delta x)\frac{u_{j+1}^{n} -u_{j-1}^{n}}{2\Delta x}(I_3-I_4) = 0
+\end{eqnarray}
+
+
+方程$(7)$可以简化为：
+\begin{equation}
+\frac{u_{j}^{n+1} -u_j^n}{\Delta t}+A_j(u_{j+1}^{n} +u_{j-1}^{n} -2u_j^{n})+B_j(u_{j+1}^{n} -u_{j-1}^{n}) = 0
+\end{equation}
+其中
+$A_j=\frac{j^2(\overline{\sigma}^2I_1 +\underline{\sigma}^2I_2)}{2},B_j=\frac{\mu j(I_3-I_4)}{2}$。
+\\于是得到
+\begin{equation}
+u_j^{n+1}=u_{j-1}^{n}(-A_j+B_j)\Delta t+u_j^{n}(1+2A_j\Delta t)+u_{j+1}^{n}(-A_j-B_j)\Delta t
+\end{equation}
+我们把它简化为
+\begin{equation}
+u_j^{n+1}=\alpha_j u_{j-1}^{n} +\beta_j u_j^{n}+\gamma_j u_{j+1}^{n}
+\end{equation}
+其中，$\alpha_j=(-A_j+B_j)\Delta t,\beta_j=(1+2A_j\Delta t),\gamma_j=(-A_j-B_j)\Delta t$。
+\\ 分别取$j=2,\ldots,J$,从而得到$J-1$个方程
+\begin{eqnarray}
+u_2^{n+1}&=&\alpha_2 u_{1}^{n} +\beta_2 u_2^{n}+\gamma_2 u_{3}^{n}\nonumber\\
+        &\ldots& \ldots \ldots \ldots \ldots \nonumber\\
+u_J^{n+1}&=&\alpha_2 u_{J-1}^{n} +\beta_J u_J^{n}+\gamma_2 u_{J+1}^{n}\nonumber
+\end{eqnarray}
+
+
+此为一个关于$u_2^n,\ldots,u_J^n$的线性方程组
+\begin{equation}
+\vec{u}_{n+1}= \mathbf{M}\vec{u}_{n}+\vec{g}
+\end{equation}
+其中，$\vec{u}_{n+1}=(u_2^{n+1},\ldots,u_J^{n+1})^T,\vec{u}_{n}=(u_2^{n},\ldots,u_J^{n})^T,\\
+\vec{g}=(\alpha_1u_1^{n},0,\ldots,0,\gamma_{J+1}u_{J+1}^{n})^T$,
+\begin{displaymath}
+\mathbf{M} =
+\left( \begin{array}{ccccccc}
+\beta_2 & \gamma_2 & 0 & \ldots & 0 & 0 & 0\\
+\alpha_3 & \beta_3 & \gamma_3 & \ldots & 0 & 0 & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+0 & 0 & 0 & \ldots & \beta_{J-2} & \gamma_{J-2} & 0 \\
+0 & 0 & 0 & \ldots & \alpha_{J-1} & \beta_{J-1} & \gamma_{J-1}\\
+0 & 0 & 0 & \ldots & 0 & \alpha_{J} & \beta_{J} \\
+\end{array} \right)
+\end{displaymath}
+
+\newpage 为了验证数值结果，我们考虑两种特殊情况.
+\\情况$1$,假设$u_{xx}<0,u_x<0$，则方程$(1)$ 变为
+\begin{equation}
+\begin{cases}
+\frac{\partial u}{\partial t}+\frac{1}{2} \underline{\sigma}^2 x^2 u_{xx}^- - \mu xu_x = 0,
+\\u(T,x) = -\Phi(x) = -(x_T-K)^+.
+\end{cases}
+\end{equation}
+由$Black-Scholes-Merton$公式
+\begin{equation}
+\begin{cases}
+\frac{\partial V}{\partial t}+\frac{1}{2}{\sigma}^2x^2V_{xx}+ (r-q)xV_x = 0,
+\\V(T,x) = -\Phi(x) = -(x_T-K)^+.
+\end{cases}
+\end{equation}
+它的解为：
+\begin{equation}
+V_t=xe^{-q(T-t)}N(d_1)-Ke^{-r(T-t)}N(d_2)
+\end{equation}
+其中\\
+\begin{equation}
+d_1=\frac{\ln x/K+(r-q+\sigma^2/2)(T-t)}{\sigma\sqrt{T-t}},d_2=d_1-\sigma\sqrt{T-t}\nonumber
+\end{equation}
+若令$u=-V,r=0,q=\mu,\sigma=\underline{\sigma}$, 则方程$(11)$ 和方程$(10)$ 一致，于是方程$(10)$ 的解依据$(12)$可以推出:
+\begin{equation}
+V_t=-xe^{-\mu(T-t)}N(\widehat{d_1})-KN(\widehat{d_2})
+\end{equation}
+其中\\
+\begin{equation}
+\widehat{d_1}=\frac{\ln x/K+(-\mu +\underline{\sigma}^2/2)(T-t)}{\underline{\sigma}\sqrt{T-t}},\widehat{d_2}=\widehat{d_1}-\underline{\sigma}\sqrt{T-t}\nonumber
+\end{equation}
+
+ 情况$2$, 假设$u_{xx}<0,u_x>0$，则方程$(1)$ 变为
+\begin{equation}
+\begin{cases}
+\frac{\partial u}{\partial t}+\frac{1}{2} \underline{\sigma}^2 x^2 u_{xx}^- + \mu xu_x = 0,
+\\u(T,x) = -\Phi(x) = -(x_T-K)^+.
+\end{cases}
+\end{equation}
+
+同理，若令方程$(11)$中$u=-V,r=0,q=-\mu,\sigma=\underline{\sigma}$, 则方程$(11)$ 和方程$(10)$ 一致，于是方程$(10)$ 的解依据$(12)$可以推出:
+\begin{equation}
+V_t=-xe^{\mu(T-t)}N(\widetilde{d_1})-KN(\widetilde{d_2})
+\end{equation}
+
+其中\\
+\begin{equation}
+\widetilde{d_1}=\frac{\ln x/K+(\mu +\underline{\sigma}^2/2)(T-t)}{\underline{\sigma}\sqrt{T-t}},\widetilde{d_2}=\widetilde{d_1}-\underline{\sigma}\sqrt{T-t}\nonumber
+\end{equation}
+
+
+\end{CJK*}
+\end{document}
