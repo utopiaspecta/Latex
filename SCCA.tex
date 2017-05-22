@@ -1,0 +1,426 @@
+\documentclass[CJK]{beamer}
+%\usetheme{Boadilla}
+\mode<article> % 仅应用于article版本
+{
+  \usepackage{beamerbasearticle}
+  \usepackage{fullpage}
+  \usepackage{hyperref}
+}
+
+%% 下面的包控制beamer的风格，可以根据自己的爱好修改
+  % 使用split风格
+  % 使用shadow风格
+%% 这些包是可能会用到的，不必修改
+\usepackage{CJK}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
+\usepackage{amsmath,amssymb}
+\usepackage{graphics}
+\usepackage{multimedia}
+
+%% 下面的代码用来读入Logo图象
+%\pgfdeclaremask{logomask}{pku-tower-mask}
+%\pgfdeclareimage[mask=logomask,height=1.5cm]{logo}{pku-tower}
+%\pgfdeclaremask{beidamask}{beida-mark-mask}
+%\pgfdeclareimage[mask=beidamask,height=0.25cm]{beida}{beida-mark}
+
+%\pgfdeclaremask{titlemask}{pku-lake2-mask}
+%\pgfdeclareimage[mask=titlemask,height=2.5cm]{title}{pku-lake2}
+%\logo{\vbox{\hbox{\hfill\pgfuseimage{logo}}}} %设置logo图标
+
+%% 定义一些自选的模板，包括背景、图标、导航条和页脚等，修改要慎重
+\beamertemplateshadingbackground{red!10}{structure!10}
+%\beamertemplatesolidbackgroundcolor{white!90!blue}
+\beamertemplatetransparentcovereddynamic
+\beamertemplateballitem
+\beamertemplatenumberedballsectiontoc
+%\beamertemplatelargetitlepage
+\beamertemplateboldpartpage
+%定义字体及字号
+%\theoremstyle{plain}
+
+
+
+\newcommand\kaishu{\CJKfamily{kai}}
+\newcommand\heiti{\CJKfamily{hei}}
+\newcommand\songti{\CJKfamily{song}}
+\newcommand\baiti{\CJKfamily{bai}}
+\newcommand{\fangsong}{\CJKfamily{fs}}
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{8.0pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+\newcommand{\bqa}{\begin{eqnarray}}
+\newcommand{\eqa}{\end{eqnarray}}
+\newcommand{\bqw}{\begin{eqnarray*}}
+\newcommand{\eqw}{\end{eqnarray*}}
+\newcommand{\no}{\noindent}
+\newcommand{\non}{\nonumber}
+\newcommand{\bea}{\begin{array}{cc}}
+\newcommand{\ena}{\end{array}}
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}%两端对齐
+\usepackage{CJK,indentfirst,amsmath,amsfonts,amssymb,amsthm,cite}
+\renewcommand\refname{\xiaowuhao\heiti {参考文献：}}
+\setlength{\parindent}{2em}
+\setlength{\jot}{4.5pt}%调节多行公式行间距
+\usepackage{fancyhdr}%页眉宏包
+\usepackage{ifthen}%这个宏包提供逻辑判断命令
+\usepackage{cases}
+%
+\title{Work Summary}
+\author[My-name]{Your Name}
+\institute[Master MODSIM]{The subtitle}
+\date{9$^{\mathrm th}$ December 2009}
+\subject{Talks}
+%
+\begin{document}
+\begin{CJK*}{GBK}{fs}
+
+%%
+%% 文档从这里正式开始
+%%   使用\part,\section,\subsection等命令组织文档结构
+%%   使用\frame命令制作幻灯片
+%%
+\defverbatim\beamerEX{
+\begin{verbatim}
+\documentclass{beamer}
+\usepackage{beamerthemesplit}
+\title{Example Presentation Created with Beamer}
+\author{Till Tantau}
+\date{\today}
+\begin{document}
+\frame{\titlepage}
+\section*{Outline}
+\frame{\tableofcontents}
+\section{Introduction}
+\subsection{Overview of the Beamer Class}
+\frame {
+   \frametitle{Features of the Beamer Class}
+   \begin{itemize}
+       \item<1-> Normal LaTeX class.
+       \item<2-> Easy overlays.
+       \item<3-> No external programs needed.
+   \end{itemize}
+}
+\end{document}
+\end{verbatim}
+}
+
+%%
+%% 定义框架页
+%%
+
+
+\AtBeginSubsection[]
+{
+\begin{frame}<beamer>
+\frametitle{Outline}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+%\frame{\titlepage}
+
+%\section*{提纲}               % section后面加*表示不收录到目录中
+%\frame
+%{
+% \frametitle{\secname}
+% \tableofcontents            % 使用这个命令自动生成目录
+%}
+
+\begin{frame}
+\frametitle{\textbf{Systemic CCA}}
+{\setlength{\baselineskip}%
+{1.5\baselineskip}\raggedright{\sihao\ This paper presented a new modelling framework(SCCA), which can help the measurement and analysis of systemic solvency risk by estimating the joint expected losses and associated contingent liabilities of financial institutions based on multivariate extreme value theory(EVT)--with practical applications to the analysis of financial sector risk management and stress testing.\par}}
+\begin{flushleft}
+{\xiaosihao\textcolor[rgb]{1.00,0.00,0.00}{Keywords: CCA, SCCA, CTE, EVT}}
+\end{flushleft}
+\end{frame}
+%%========================================================================
+
+
+\begin{frame}
+\frametitle{\textbf{METHODOLOGY}}
+\begin{flushleft}
+\textbf{Object:} Measure joint market-implied expected losses as a result of system-wide effects on solvency conditions.\\
+\end{flushleft}
+\begin{flushleft}
+\textbf{Step 1:}Estimate each firm's expected losses using an enhanced form of CCA.\\
+\end{flushleft}
+\begin{flushleft}
+{\textbf{Step 2:}Expected losses  are assume to follow an Generalized Extreme Value distribution.
+\textcolor[rgb]{1.00,0.00,0.00}{Then} combine them to a multivariate solution by utilizing a non-parametric dependance measure.
+\textcolor[rgb]{1.00,0.00,0.00}{Finally}, derive the amount of joint expected losses as the multivariate conditional tail expectation.\par}
+\end{flushleft}
+\end{frame}
+%%========================================================================
+\begin{frame}
+\frametitle{\textbf{CCA: A generalization of option pricing theory} \\
+- pioneered by Black and Scholes(1973) and Merton(1973 and 1974)}
+%\begin{block}{Series expansion}
+%\end{block}
+It is used to construct a risk-adjusted balance sheets, based on three principles that are applied in this paper: \\
+(i) the values of liabilities are derived from assets; \\
+(ii) assets follow a stochastic process; \\
+(iii) liabilities have different priorities (senior and junior claims). Equity can be modeled as an implicit call option, while risky debt can be modeled as the default-free value of debt less an implicit put option that captures expected losses. \\
+\textbf{In the Systemic CCA model,advance option pricing is applied to account for biases in the Black-Scholes-Merton (BSM) specification.}
+%\vspace*{2ex}
+\end{frame}
+%%========================================================================
+\begin{frame}
+\frametitle{\textbf{The amount of expected losses is modeled as a put option based on the individual risk-adjusted balance sheet.}}
+\begin{flushleft}
+The present value of market-implied  expected losses associated with outstanding liabilities can be valued as an implicit put option value \\
+\end{flushleft}
+\begin{equation}
+P_E(t)=B e^{-r(T-t)}\mathrm{\Phi} (-d+\sigma _A \sqrt {T-t})-A(t)\mathrm{\Phi}(-d) \non
+\end{equation}
+with the present value of debt $B$ as strike price on the asset value $A(t)$ and asset return volatility
+\begin{equation}
+\sigma_A=\frac{E(t)\sigma_E}{A(t)\mathrm{\Phi}(d)}=(1-\frac{B e^{-r(T-t)}\mathrm{\Phi }(d-\sigma _A \sqrt {T-t})}{A(t)\mathrm{\Phi}(d)})\non
+\end{equation}
+where $d=\frac{ln(A(t)/B)+(r_A+\frac{\sigma_A^2}{2} (T-t))}{\sigma_A \sqrt{T-t}}$
+\end{frame}
+%%========================================================================
+\begin{frame}
+\frametitle{{\sihao\kaishu \textbf{Appendix 1}}}
+\begin{flushleft}
+The asset value $A(t)$ at time $t$ is assumed to evolve (under the risk neutral probability measure $\mathcal{Q})$ following the stochastic differential equation:
+\end{flushleft}
+\begin{equation}
+d A(t)=A(t) r_A dt+A(t)\sigma_A dW^{\mathcal{Q}}(t)\non
+\end{equation}
+i.e. $d ln A(t)=r_A dt+\sigma_AdW^{\mathcal{Q}}(t)\non$,then
+\begin{eqnarray}
+d ln A(t)&=&\frac{\partial G}{\partial A}d A(t)+\frac{1}{2}\frac{\partial^2 G}{\partial A(t)^2} A(t)^2\sigma^2 d t\non\\
+&=&\frac{\partial G}{\partial A}d(A(t) r_A dt+A(t)\sigma_A dW^{\mathcal{Q}}(t))+\frac{1}{2}\frac{\partial^2 G}{\partial A(t)^2} A(t)^2\sigma^2 d t\non\\
+&=&(\frac{\partial G}{\partial A} r_A A(t)+\frac{1}{2}\frac{\partial^2 G}{\partial A^2} A(t)^2\sigma^2)d t+\frac{\partial G}{\partial A}\sigma_A A(t) dW^{\mathcal{Q}}(t)\non\\
+&=&(r_A-\frac{\sigma_A^2}{2}) dt+\sigma_A dW^{\mathcal{Q}}(t)\non
+\end{eqnarray}
+\end{frame}
+%%========================================================================
+\begin{frame}
+\begin{equation}
+ln A(t)-A(0)\approx (r_A-\frac{\sigma_A^2}{2})t+ \sigma_A \sqrt t\non
+\end{equation}
+Therefore,
+\begin{equation}
+A(T-t)\sim A(t) exp[(r_A-\frac{\sigma_A^2}{2})(T-t)+ \sigma_A z\sqrt{T-t}]\non
+\end{equation}
+where $z\sim \phi(0,\sigma)$.\\
+\begin{flushleft}
+{\wuhao\ More specifically,$A(t)=E(t)+D(t)$, and default occurs if asset value($A(t)$)is insufficient to satisfy the amount of debt($B$).The expected  probability of default(PD)at time $t$ is defined as \par}
+\end{flushleft}
+\bqa
+P(A(t)< B)&=&P(A(t)< exp[(r_A-\frac{\sigma_A^2}{2})(T-t)+ \sigma_A z\sqrt{T-t}<B]\non\\
+&=&P(z<\frac{ln(B/A(t))-(r_A-\frac{\sigma_A^2}{2})(T-t)}{\sigma_A \sqrt{T-t}})\non\\
+&=&\mathrm{\Phi}(-d+\sigma_A \sqrt{T-t})\non
+\eqa
+with the cumulative probability $\mathrm{\Phi}(\bullet)$ of the standard normal distribution function.
+\end{frame}
+%%======================================
+\begin{frame}
+%%两端对齐
+\begin{flushleft}
+The equity value $E(t)$ is defined as the residual claim on assets once creditors are paid the full amount $D(t)$
+\end{flushleft}
+$$D(t)=B e^{r(T-t)}- P_E(t)$$\non
+\raggedright{
+Thus the  equity value is an implicit call option on assets as the underlying, with an strike price equal to default barrier($B$)}
+\begin{equation}
+E(t)=A(t)\mathrm{\Phi}(d)-B e^{-r(T-t)}\mathrm{\Phi} (d-\sigma _A \sqrt {T-t}) \non
+\end{equation}
+\bqa
+d E(t)&=&\frac{\partial E}{\partial A}d A(t)+\frac{1}{2}\frac{\partial^2 E}{\partial A(t)^2} A(t)^2\sigma^2 d t\non\\
+&=&\frac{\partial E}{\partial A}d(A(t) r_A dt+A(t)\sigma_A dW^{\mathcal{Q}}(t))+\frac{1}{2}\frac{\partial^2 E}{\partial A(t)^2} A(t)^2\sigma^2 d t\non\\
+&=&(\frac{\partial E}{\partial A} r_A A(t)+\frac{1}{2}\frac{\partial^2 E}{\partial A^2} A(t)^2\sigma^2)d t+\frac{\partial E}{\partial A}\sigma_A A(t) dW^{\mathcal{Q}}(t)\non
+\eqa
+Assuming that $d E(t)=E(t) r_A dt+E(t)\sigma_E dW^{\mathcal{Q}}(t)$,then we have
+$E(t) \sigma_E=\frac{\partial E}{\partial A}\sigma_A A(t)$,then $\sigma_A=\frac{E(t)\sigma_E}{A(t)\mathrm{\Phi}(d)}$
+\end{frame}
+
+%%===============================================================
+
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{ How to estimate $P_E(t)$ and $\sigma _A$}}
+\bqa
+P_E(t)&=& B e^{-r(T-t)}\mathrm{\Phi} (-d_2)-A(t)\mathrm{\Phi}(-d) (d_2=d-\sigma _A \sqrt {T-t})\non\\
+&=&\mathrm{\Phi} (-d_2) (1-\frac{\mathrm{\Phi}(-d)}{\mathrm{\Phi} (-d_2)} \frac{A(t)}{B e^{-r(T-t)}}) B e^{-r(T-t)} \non
+\eqa
+\bqa
+\sigma_A&=&\frac{E(t)\sigma_E}{A(t)\mathrm{\Phi}(d)}=\frac{E(t)}{A(t)\mathrm{\Phi}(d)}\sigma_E\non\\
+&=&[1-\frac{A(t)\mathrm{\Phi}(d)-E(t)}{A(t)\mathrm{\Phi}(d)}]\sigma_E\non\\
+&=&[1-\frac{A(t)\mathrm{\Phi}(d)-(A(t)\mathrm{\Phi}(d)-B e^{-r(T-t)}\mathrm{\Phi} (d-\sigma _A \sqrt {T-t}))}{A(t)\mathrm{\Phi}(d)}]\sigma_E\non\\
+&=&[1-\frac{B e^{-r(T-t)}\mathrm{\Phi} (d-\sigma _A \sqrt {T-t})}{A(t)\mathrm{\Phi}(d)}]\sigma_E\non
+\eqa
+\end{frame}
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Risk-neutral probability distribution of $A(t)$ }}
+\bqa
+\frac{\partial E}{\partial B}&=&-e^{-r_{A_t,T-t}}\mathrm{\Phi} (d_2)(d_2=d-\sigma _A \sqrt {T-t})\non\\
+\frac{\partial^2 E}{\partial B^2}&=&\frac{\partial \mathrm{\Phi}(d_2)}{\partial d}\frac{\partial d_2}{\partial B}=\varphi(d_2)\frac{\frac{A(t) }{B}\cdot\frac{1}{A(t)}}{\sigma_A \sqrt{T-t}}=e^{-r_{A_t,T-t}}\frac{\varphi(d_2)}{B\sigma_A \sqrt{T-t}}\non
+\eqa
+\bqa
+f_t^{\ast}(A(T-t))&=&e^{-r_{A_t,T-t}} \frac{\partial^2 E}{\partial B^2} \mid_{B=A(T-t)}\non\\
+&=&\frac{1}{A(T-t)\sqrt{2\pi\sigma_A^2(T-t)}}\cdot\non\\
+&exp&[-\frac{[ln(A(T-t)/A(t))+(r_{A_t,T-t}-\frac{\sigma_A^2}{2} (T-t))]^2}{2 \sigma_A^2(T-t)}]\non
+\eqa
+\end{frame}
+
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2-Estimating the joint expected losses from default risk.} }
+Step 2(i)Estimating the marginal distributions of individual expected losses.\\
+Specify the statistical distribution of individual expected losses ( put option values obtained for each firm($P_{E}(t)$)) in accordance with extreme value theory(EVT). Denote i.i.d random observations of expected losses($n$-number of daily put option values) for $j$ firms in the sample as
+$$X_j^n=P_{E,j}^1(t),\ldots,P_{E,j}^n(t)$$
+Given $X_j=max(P_{E,j}^1(t),\ldots,P_{E,j}^n(t))$,there exists a choice of $\beta_j^n>0$ and $\alpha_j^n$, such that the probability of each ordered n-sequence of normalized sample $(X_j-\alpha_j^n)/\beta_j^n$ converges to the non-degenerate $H(x)$ as $n\rightarrow\infty$,so that
+$$F_n^{[\beta^n x+\alpha^n]}(x)=\lim_{n\rightarrow\infty} P((X-\alpha^n)/\beta^n<y)=[F(\beta^n y+\alpha^n)]^n\rightarrow H(x)$$
+\end{frame}
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2 (i) Estimating the marginal distributions of individual expected losses.} }
+\begin{flushleft}
+The limit distributions above are combined into a unified parametric family of the GEV
+probability distribution function
+\end{flushleft}
+$$h_{\mu,\sigma,\xi}(x)=\frac{1}{\sigma}(1+\xi \frac{(x-\mu)}{\sigma})^{-1/\xi-1}exp(-(1+\xi \frac{(x-\mu)}{\sigma})_+^{-1/\xi})$$
+\begin{flushleft}
+and the cumulative distribution function
+\end{flushleft}
+\bqa
+H_{\mu,\sigma,\xi}(x)=\left\{
+\begin{array}{ll}
+exp(-(1+\xi \frac{(x-\mu)}{\sigma})^{-1/\xi}) &
+if\ 1+\xi \frac{(x-\mu)}{\sigma}\geq 0\\
+exp(-exp(-\frac{(x-\mu)}{\sigma})) & if\ x\in\mathbb{R},\xi=0
+\non
+\end{array}
+\right.
+\eqa
+From $\lim_{t\rightarrow 0}(1+t)^{1/t}=e$,we have
+\bqa
+\lim_{\xi\rightarrow 0}\left(1+\xi \frac{(x-\mu)}{\sigma}\right)^{-1/\xi}&=&\lim_{\xi\rightarrow 0}\left(\left(1+\xi \frac{(x-\mu)}{\sigma}\right)^{\frac{1}{\xi \cdot\frac{(x-\mu)}{\sigma}}}\right)^{-\frac{(x-\mu)}{\sigma}}\non\\
+&=& exp\left(-\frac{(x-\mu)}{\sigma}\right)\non
+\eqa
+\end{frame}
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2 (i) Estimating the marginal distributions of individual expected losses.} }
+\begin{flushleft}
+Thus, the jth univariate marginal density function of each expected loss series converging to
+GEV in the limit is defined as
+\end{flushleft}
+$$y_j(x)=\left(1+\xi_j \frac{(x-\mu_j)}{\sigma_j}\right)_+^{-1/\xi_j}(for j=1,\ldots,m)$$
+where $1+\xi_j \frac{(x-\mu_j)}{\sigma_j}> 0$ and shape parameter$\xi_j\neq 0$.\\
+\textcolor[rgb]{1.00,0.00,0.00}{The higher the absolute value of shape parameter, the larger the weight of the tail and the slower the
+speed at which the tail approaches its limit.}
+\end{frame}
+%%=================================================================
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2(ii)-Estimating the dependence structure of individual expected losses.} }
+Define a non-parametric, multivariate dependence function between the marginal distributions of expected losses by expanding the bivariate logistic method
+proposed by Pickands (1981) to the multivariate case and adjusting the margins according to Hall and Tajvidi (2000) so that
+$$\Upsilon(\omega)=min\left\{1,max\left\{n(\sum_{k=1}^n\Lambda_{j=1}^m\frac{y_{i,j}/\hat y_{\cdot j}}{\omega_j})^{-1},\omega,1-\omega\right\}\right\}$$
+where$\hat y_{\cdot j}=\sum_{i=1}^n y_{i,j}/n$,$y_{i,j}$ reflects the average marginal density of all $n$ put option values.$\Upsilon(\bullet)$ represents
+a convex function on $[0,1]$,with$\Upsilon(0)=\Upsilon(1)=1,\Lambda_{j=1}^m x_j=min\{x_1,\ldots,x_m\}.$\\
+\begin{flushleft}
+The upper and lower limits of $\Upsilon(\bullet)$ are obtained under \textcolor[rgb]{1.00,0.00,0.00}{complete dependence} and \textcolor[rgb]{0.00,0.00,1.00}{mutual independence}, respectively.
+\end{flushleft}
+\end{frame}
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{How to estimate $\Upsilon(\bullet)$?} }
+\begin{flushleft}
+It is estimated iteratively subject to the optimization of the $(m-1)$-dimensional unit simplex
+\end{flushleft}
+$$S_m=\left\{(\omega_1,\cdots,\omega_{m-1})\in\mathbb{R}_+^m:\omega_j>0,\sum_{j=1}^{m-1}\omega_j\leq 1 and \omega_m=1-\sum_{j=1}^{m-1}\omega_j\right\}$$
+\begin{flushleft}
+which establishes the degree of coincidence of multiple series of cross-classified random variables similar to a $\chi$-statistic that measures the statistical likelihood that observed values differ from their expected distribution.
+\end{flushleft}
+\end{frame}
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2(iii)-Estimating the joint distributions of expected losses.} }
+\raggedright{
+Combine the marginal distributions of these individual expected losses with their dependence structure to generate a multivariate extreme value distribution(MGEV) over the same estimation period as above.}
+\begin{flushleft}
+The cumulative distribution function is specified as
+\end{flushleft}
+$$G_{t,m}(x)=exp \left\{-(\sum_{j=1}^m y_{t,j}) \Upsilon_t(\omega)\right\}$$
+\begin{flushleft}
+with corresponding probability density function
+\end{flushleft}
+$$g_{t,m}(x)=\hat\sigma_{t,m}^{-1}\left(\left(\sum_{j=1}^m y_{t,j}\right)\Upsilon_t(\omega)\right)^{\hat\xi_{t,m}+1}exp \left\{-(\sum_{j=1}^m y_{t,j}) \Upsilon_t(\omega)\right\}$$
+\begin{flushleft}
+at time $t=\tau+1$ by maximizing the likelihood $\prod_{j=1}^m g_{t,m}(x\mid\theta)$ over parameters $\theta=(\mu,\sigma,\xi)$ simultaneously.
+\end{flushleft}
+\end{frame}
+%%==================================================================
+\begin{frame}
+\begin{flushleft}
+The equation  above represents the functional form of the joint expected losses of all sample firms based on the empirical observations in $X_j^n=P_{E,j}^1(t),\ldots,P_{E,j}^n(t)$ above.
+\end{flushleft}
+\bigskip
+\begin{flushleft}
+To obtain a multivariate distribution function,the dependence function above combines several marginal distribution functions in accordance with \textcolor[rgb]{0.00,0.00,1.00}{\emph{Sklar's (1959) theorem}} on constructing joint distributions with arbitrary marginal distributions via \textcolor[rgb]{1.00,0.00,0.00}{\emph{\emph{copula functions}}} (which completely describes the dependence structure and contains all the information
+to link the marginal distributions).
+\end{flushleft}
+\end{frame}
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2(iv)-Estimating tail risk measure of joint expected losses.} }
+\begin{flushleft}
+Finally, we obtain the joint expected shortfall (ES) (or conditional Value-at-Risk (VaR))as a measure conditional tail expectation (CTE).
+\end{flushleft}
+\begin{flushleft}
+\textcolor[rgb]{1.00,0.00,0.00}{ES} defines the probability-weighted residual density (i.e., the average aggregate expected losses) beyond a pre-specified statistical confidence level (“\textcolor[rgb]{1.00,0.00,0.00}{severity threshold}”) over a given estimation time period.
+\end{flushleft}
+$$ES_a=\textbf{E}[X\mid X> VaR_a)]$$
+$$=\frac{1}{1-F(VaR_a)}\int_{VaR_a}^\infty \left(1-F(x)\right)dx=\frac{1}{1-a}\int_a^1 VaR_ada$$
+where $VaR_a\equiv inf\{x:F(x)\geq a\}$.
+\end{frame}
+%%==================================================================
+\begin{frame}
+\begin{flushleft}
+Then we can calculate ES \textcolor[rgb]{1.00,0.00,0.00}{in a multivariate context} as
+\end{flushleft}
+$$ES_{t,\tau,m,a}=-\textbf{E}[\textsc{z}_{t}\mid \textsc{z}_{t}> G_{t,\tau,m}^{-1}(a)=VaR_{t,a}]$$
+$$=-\frac{1}{a}\int_{0}^{a}G_{t,\tau,m}^{-1}(x)dx$$
+\begin{flushleft}
+where $G^{-1}(a)\equiv inf\{x:G(x)\geq a\}$,so that
+\end{flushleft}
+$$VaR_{t,a}=sup\{G_{t,\tau,m}^{-1}(a)\mid P(\textsc{z}_{t}> G_{t,\tau,m}^{-1}(a))\geq a\}$$
+\begin{flushleft}
+with the point estimate of joint potential losses of $m$ firms at time $t$ defined as
+\end{flushleft}
+$$G_{t,\tau,m}^{-1}(a)=\hat\mu_{t,m}+\hat\sigma_{t,m}/{\hat\xi_{t,m}}\left(\left(-\frac{ln(a)}{\Upsilon_{t}(\omega)}\right)^{-\hat\xi_{t,m}}-1\right)$$
+\end{frame}
+
+%%==================================================================
+\begin{frame}
+\frametitle{ \textbf{Step 2(v)-Estimating the individual contribution to joint expected losses.} }
+\begin{flushleft}
+The contribution of each firm is determined by calculating the cross-partial derivative of the joint distribution of expected losses.
+\end{flushleft}
+\begin{flushleft}
+The joint ES in this paper is written as a \textcolor[rgb]{1.00,0.00,0.00}{linear combination of individual ES values},$ES_{t,\tau,m,a}$, where the relative weights $\Psi_{\tau,m,a} $(in the weighted sum) are given by the second order cross-partial derivative of the inverse of the joint probability density function $G_{t,\tau,m}^{-1}(\cdot)$ to changes in both the dependence function$\Upsilon_t(\cdot)$ and the individual marginal severity $y_{t,j}$ of expected losses.
+\end{flushleft}
+$$ES_{t,\tau,m,a}=-\sum_{j}^m \Psi_{\tau,m,a}\textbf{E}[\textsc{z}_{t,j}\mid \textsc{z}_{t,m}> G_{t,\tau,m}^{-1}(a)=VaR_{t,a}]$$
+\begin{flushleft}
+where the relative weight of institution j at statistical confidence level a is defined as the marginal contribution
+\end{flushleft}
+$$\Psi_{\tau,j,a}=\frac{\partial G_{t,\tau,m}^{-1}(a)}{\partial y_{t,j}\partial \Upsilon_t(\omega)}\ s.t.\sum_{j}^m \Psi_{\tau,j,a}=1\ and\ \textcolor[rgb]{1.00,0.00,0.00}{\Psi_{\tau,j,a}\textsc{z}_{\tau,j}\leq\textsc{z}_{\tau,m}}$$
+\end{frame}
+%%==================================================================
+\end{CJK*}
+\end{document}
+
