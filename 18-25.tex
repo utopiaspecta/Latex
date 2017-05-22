@@ -1,0 +1,304 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amscd,graphicx}
+
+\textheight=22cm \topmargin=-1cm
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{defi}[theo]{Definition}
+\newtheorem{lemm}[theo]{Lemma}
+\newtheorem{coro}[theo]{Corollary}
+\newtheorem{rema}[theo]{Remark}
+\newcommand{\non}{\nonumber}
+\newcommand{\newsection}[1]{\section{#1} \setcounter{equation}{0}}
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\makeatletter \@addtoreset{figure}{section} \makeatother
+\makeatletter
+\long\def\@makecaption#1#2{%
+   \vskip 10\p@
+   \setbox\@tempboxa\hbox{{#1}\ \ #2}%
+   \ifdim \wd\@tempboxa >\hsize
+       {#1}\ \ #2\par
+   \else
+       \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+   \fi}
+\makeatother
+
+\parskip=8pt
+
+\def\qed{\hfill \rule{4pt}{7pt}}
+\def\pf{\noindent {\it Proof.} }
+\begin{document}
+\textwidth 150mm \textheight 225mm
+\title{ Matrix Method for Linear Sequential Dynamical
+Systems on Digraphs }
+
+\author{
+  {\small William Y.C. Chen, Xueliang Li and Jie Zheng}\\
+  {\small Center for Combinatorics and LPMC}\\
+  {\small Nankai University, Tianjin 300071, P.R. China}\\
+  {\small Email: chenstation@yahoo.com; x.li@eyou.com; jzheng@eyou.com}
+ }
+
+\date{June 16, 2003}
+\maketitle
+\begin{center}
+\begin{minipage}{120mm}
+\vskip 0.3cm
+\begin{center}
+{\small {\bf Abstract}}
+\end{center}
+{\small In this paper, we introduce the concept of sequential
+dynamical systems (SDS) on digraphs. We focus on the discussion of
+linear sequential dynamical systems (LSDS). Matrix method is given
+in their analysis. Two special LSDS, $OR$-SDS and $PAR$-SDS, are
+particularly analyzed. Some structural properties on the image
+spaces of $[OR_D,\pi]$ and $[PAR_D,\pi]$ are obtained. The
+asymptotic behavior of $[OR_D,\pi]$ is described in terms of the
+properties of the digraph $D$ with respect to the ordering $\pi$.
+Our results show that LSDS on digraphs have much more interesting
+properties than those on undirected graphs. \\
+[3mm] {\bf Keywords:} Linear Sequential Dynamical Systems (LSDS),
+Digraph, $(D,\pi)$-Trail, Matrix\\
+[3mm] {\bf AMS subject classification(2000):} 37B99, 68Q20 }
+\end{minipage}
+\end{center}
+
+\section{Introduction}
+
+
+
+\subsection*{B: The condition for uniqueness of clearing payment vector}
+
+\begin{defi}\label{1}
+For a given financial network, we call it (a financial network) regular, if for any nodes $i,j$, there is a road from node $i$ to node $j$,$i_1,i_2,\cdots,i_m$, such that $i_1=i,i_m=j$,and $\Pi_{i_li_{l+1}}>0(l=1,\cdots,m-1)$.
+\end{defi}
+\begin{rema}\label{2}
+The meaning of the regular financial network is that each 2 financial institutions in the network have direct or indirect obligation. According to the theory of graph, it is equivalent to an unilaterally strong connected graph and the corresponding matrix is irreducible. And if no so, the system could be divided into several regular subsystems.
+\end{rema}
+Now we have the following result:\\
+\begin{theo}\label{2}
+If the financial network is regular and the sum of operating cash flow $\sum_{i=1}^{n}e_i\neq 0$, then there is unique clearing payment vector$p^*(0\leq p^*\leq \overline{p})$.
+\end{theo}
+
+\begin{lemm}\label{1}
+The relative obligation matrix\\
+$$\Pi^T = \left(
+\begin{array}{llll}
+0 & \Pi_{2,1} & \ldots & \Pi_{n,1}\\
+\Pi_{1,2} & 0 &  \ldots & \Pi_{21}\\
+\vdots & \vdots & \ddots & \vdots \\
+\Pi_{1,n-1}& \Pi_{2,n-1} &  \ldots & \Pi_{n,n-1}\\
+\Pi_{1,n}& \Pi_{2,n} &  \ldots & 0
+\end{array}
+\right)$$
+has the property that spectral radius of any its $n-1$ principal sub matrix (delete $i^{th}$ row and $i^{th}$ column of $\Pi^T,1\leq i \leq n$) is less than $1$.
+\end{lemm}
+\pf Denote the sub matrix $\Pi_{n-1\times n-1}^{T}$,then the complex matrix $\Pi_{n-1\times n-1}^{T}- \lambda E$ is column diagonally-dominant for complex number $\lambda$ with its norm $\mid\lambda\mid \geq 1$,and any row of the matrix $\Pi^T$ cannot be zero vector otherwise the corresponding node will not be connected with other nodes. Thus at least one column of matrix $\Pi_{n-1\times n-1}^{T}- \lambda E$  is strictly dominant, because the matrix is irreducible, we get that matrix $\Pi_{n-1\times n-1}^{T}- \lambda E$ is nonsingular by financial network's regularity condition, i.e., by Remark 2,  that means there is no eigenvalue for matrix $\Pi_{n-1\times n-1}^{T}$ with its norm bigger than or equal to 1, or its spectral radius is less than 1. The proof is complete.\\
+
+Now we have the following corollary.\\
+
+
+\begin{coro}
+The matrix $\Pi^T-E = \left(
+\begin{array}{llll}
+-1 & \Pi_{2,1} & \ldots & \Pi_{n,1}\\
+\Pi_{1,2} & -1 &  \ldots & \Pi_{21}\\
+\vdots & \vdots & \ddots & \vdots \\
+\Pi_{1,n-1}& \Pi_{2,n-1} &  \ldots & \Pi_{n,n-1}\\
+\Pi_{1,n}& \Pi_{2,n} &  \ldots & -1
+\end{array}
+\right)$ is singular£¬but the determinant of any its  principal sub matrix is nonsingular.
+
+\end{coro}
+\pf Because the sum of every column of $\Pi^{T}- \lambda E$is zero, so the matrix is singular.
+From Lemma 1, we know that there is no eigenvalue 1 for any principal sub matrix of matrix $\Pi^{T}$, which means any its  principal sub matrix of $\Pi^{T}- \lambda E$ is nonsingular. The proof is complete.
+
+
+\begin{lemm}\label{all}
+From expression (4) or (5), the singularity of the matrix $\Pi^{T}- \lambda E$ causes the issue in proving the uniqueness of clearing payment vectors for the financial network. By Corollary 1, we know that the uniqueness of clearing payment vector for a given financial network is equivalent to the uniqueness of anyone of its element.
+\end{lemm}
+Now we prove Theorem 2.\\
+
+Proof of theorem 2. If the sum of operating cash flow $\sum_{i=1}^{n}e_i >0$, we claim that at least one element of the least clearing payment vector $p^-$ satisfies $p_i^-=\overline{p_i}$, which means for any clearing payment vector this element is the same, otherwise,every node will default under the for the least clearing payment vector $p^-$ that means expressions (2) and (3) are valid, that is $\Pi^T p^-+e-p^-\leq 0$. Multiplying $1^T=(1,1,\cdots,1)^T$, we get contradiction $1^T(\Pi^T -E)p^-+1^T e=1^T e\leq 0$.
+Thus, the $i^{th}$ element is unique and by the Corollary 1, the rest elements are also unique.
+If $\sum_{i=1}^{n}e_i >0$,there is at least element $p_i^+=0$ for the greatest clearing payment vector $p^+$, otherwise, the expressions (1) and (2) are valid, i.e.$\Pi^T p^++e-p^+\geq 0$,$1^T(\Pi^T -E)p^++1^T e=1^T e\geq 0$ ,we also introduce contradiction, so the $i^{th}$ element of the greatest clearing payment vector is unique, and so on the rest elements are also unique. The proof is complete.
+
+By so far, we know that the assumption of regularity assures that the clearing payment vector of financial network at most has 1-dimension freedom and the condition $\sum_{i=1}^{n}e_i \neq0$ guarantees further that it is unique. We one have the following result.
+
+\begin{theo}
+When $\sum_{i=1}^{n}e_i = 0$,the sufficient and necessary condition for the uniqueness of  the clearing payment vector is at least one element of the least clearing payment vector touch its lower boundary or one element of the greatest clearing payment vector touch its upper boundary.
+\end{theo}
+\pf  By following the proof in Theorem 2,  it is clear that the clearing payment vector is unique if the condition is true. Otherwise, just the case (2) could happen ,that is, any clearing payment vector $p^*$ should satisfies $\Pi^T p^*+e-p^*= 0$ or $(\Pi^T-E)p^*= -e$. Adding every row to the last row, noticing $\sum_{i=1}^{n}e_i = 0$ and that rank of matrix $(\Pi^T-E)$  is $n-1$, we obtain the result and proof is complete.
+
+\begin{rema}\label{all}
+In the case $\sum_{i=1}^{n}e_i = 0$,the uniqueness of  the clearing payment vector can not be guaranteed unless at least one of its element is unique by the following example in two cases¡¯ discussion.\\
+For example, given $\sum_{i=1}^{n}e_i = 0$,$\Pi^T = \left(
+\begin{array}{ll}
+0 & 1 \\
+1 & 0
+\end{array}
+\right)$  the nominal obligation $\bar p_1=\bar p_2=2$ .
+\end{rema}
+{\bf Case 1:}
+Let $e_1=-1$, and $e_2=1$,$\Pi^T p^*+e-p^*$=
+$
+  \left(\begin{array}{cc}
+    -1 & 1\\
+    1 & -1\\
+  \end{array}\right)\left(
+  \begin{array}{c}
+    p_1^*\\
+    p_2^*\\
+  \end{array}\right)+\left(
+  \begin{array}{c}
+    -1\\
+    1\\
+  \end{array}\right)
+$=0,
+thus
+$
+\begin{cases}
+-p_1^\ast+p_2^\ast=1\\
+p_1^\ast-p_2^\ast=-1
+\end{cases}
+$, the solution
+$\begin{cases}
+p_1^*=t
+\\p_2^*=1+t
+\end{cases}
+(0\leq t\leq 1)$is not unique.\\
+{\bf Case 2:}
+Let $e_1=-2$, and $e_2=2$, thus
+$\begin{cases}
+-p_1^*+p_2^*=2
+\\p_1^*-p_2^*=-2
+\end{cases}$
+, the solution
+$\begin{cases}
+p_1^*=t
+\\p_2^*=2+t
+\end{cases}$
+should satisfies $0\leq p_1^*\leq 2,0\leq p_2^*\leq 2$,it could happen only when $t=0$, i.e., the solution is unique. Thus, $\sum_{i=1}^{n}e_i \neq 0$ is just a sufficient condition for uniqueness of the clearing payment vector.
+\begin{rema}\label{all}
+There is an interesting property that under the assumption of regularity, any two different clearing payment vector, if one corresponding element bigger than another one¡¯s then this should hold for every other elements. And if this is true, we can derive that every element is same from the fact that one corresponding element equal.
+\end{rema}
+We give the proof of Remark 4's result here: Indeed, from the proof of the existence of clearing payment vector in Theorem 1, there is a large or small relationship between any two clearing payment vectors $p^1,p^2$. Assume $p^1>p^2$,and if there is $i_0$ such that$p_{i_0}^1\geq p_{i_0}^2$, we will show that for every $i(i=1,2,\cdots,n)$,i.e.$p_{i}^1>p_{i}^2$. If not so, $\exists j,p_j^1\leq p_j^2$,by the regularity assumption, there is a chain of nodes from node $i_0$ to node $j$,$i_0,i_1,\cdots,i_m=j$and$\Pi_{i_ki_{k+1}}>0(k=0,1,\cdots,m-1)$. According to Theorem 1, we have\\
+$\Pi^T p^1-p^1+e=\Pi^T p^2-p^2+e$ or $(\Pi^T-E)(p^1-p^2)=0$. The $i_1^{th}$ equation is\\
+$$\sum_{j=1}^{n}\Pi_{ji_1}(p_j^1-p_j^2)-(p_{i_1}^1-p_{i_1}^2)=0,or p_{i_1}^1-p_{i_1}^2=\Pi_{i_0i_1}(p_{i_0}^1-p_{i_0}^2)+\sum_{j\neq i_0}\Pi_{ji_1}(p_j^1-p_j^2)
+$$
+Due to $\Pi_{ji_1}\geq 0,p_j^1\geq p_j^2 $,thus $p_{i_1}^1-p_{i_1}^2\leq \Pi_{i_0i_1}(p_{i_0}^1-p_{i_0}^2)$, so, $p_{i_1}^1-p_{i_1}^2$.
+Using inductive method step by step, we obtain contradiction $p_j^1=p_m^1 p_m^2= p_j^2$, so, $p^1\> p_j^2$.
+\subsection{The continuous dependence of clearing payment vector to the operating cash flow}
+In this section, we establish the continuity results for the cleaning payment vectors of banking system , which could be regarded as the fundamental supporting for the study of systemic risk with the numerical simulations as used by Elsinger et al (2006) and references from the book edited by Fouque and Langsam (2013) wherein. The following result was first established by Ren et al (2013), we list it below and also give it¡¯s a complete proof.
+\begin{theo}
+Under the assumption $\sum_{i=1}^{n}e_i \neq0$, the unique clearing payment vector is continuously dependent to the operating cash flow.
+\end{theo}
+\pf  Assume $e^1,e^2$ to be two close enough operating cash flows which means if$\sum_{i=1}^{n}e_i^1 >0$,then$\sum_{i=1}^{n}e_i^2 >0$(or both are less than zero). Denoting$\hat{e}=max(e^1,e^2)$and $\tilde{e}=min(e^1,e^2)$,and so$\hat{e}\geq tilde{e}$,taking $\hat{e}$ and $\tilde{e}$ as new operating cash flows, we have $\sum_{i=1}^{n}\hat{e}_i^1 >0$ and $\sum_{i=1}^{n}\tilde{e}_i^1 >0$.Denoting the corresponding clearing payment vectors to be $\hat{p},\tilde{e}$,thus we have $\hat{p}>\tilde{p}$. From the proof of Theorem 1, for the clearing payment vector $p^*$, $(\Pi^T p^*+e-p^*)_i(i=1,\cdots,n)$is a monotone non-decreasing function about $p^*$ and $e$, i.e. if $\hat{e}>\tilde{e}$, then\\
+\begin{equation}
+(\Pi^T \hat{p}+e-\hat{p})_i\geq (\Pi^T \tilde{p}+e-\tilde{p})_i or (\Pi^T-E)(\hat{p}-\tilde{p})\geq-(\hat{e}-\tilde{e})
+\end{equation}
+We also note that for any $\forall i$,\\
+\begin{eqnarray}
+  0 &\leq&  (\Pi^T \hat{p}+e-\hat{p})_i-(\Pi^T \hat{p}+e-\tilde{p})_i \leq \sum_{i=1}^{n}[(\Pi^T \hat{p}+e-\hat{p})_i-(\Pi^T \tilde{p}+e-\tilde{p})_i]\non\\
+    &\leq& \sum_{i=1}^{n}\sum_{j=1}^{n}\Pi_{ji}(\hat{p}_j-\tilde{p}_j)-\sum_{i=1}^{n}(\hat{p}_i-\tilde{p}_i)+\sum_{i=1}^{n}(\hat{e}_i-\tilde{e}_i)\non\\
+    &=&\sum_{i=1}^{n}(\hat{e_i}-\tilde{e_i})\non\\
+    &i.e.&  (\Pi^T-E)(\hat{p}-\tilde{p})\leq\sum_{i=1}^{n}(\hat{e_i}-\tilde{e_i})1^T,
+\end{eqnarray}
+where$i^T=(1,\cdots,1)^T$, in terms of linear equations, it as follows
+\begin{equation}
+(\Pi^T-E)(\hat{p}-\tilde{p})=\overrightarrow{f}
+\end{equation}
+By coming(8) and(10), for any$\overrightarrow{f}$, we have the estimation as follows
+$$\mid\overrightarrow{f}\mid\leq\sum_{i=1}^{n}(\hat{e_i}-\tilde{e_i})1^T.$$
+Now we estimate the upper bound for the equation system (10)¡¯s solution $(\hat{p}-\tilde{p})$.\\
+By the fact at least one component for the vector $\hat{p}$ and the vector $\tilde{p}$ must be equal (i.e., when $\sum_{i=1}^{n}\tilde{e}_i < 0$, we have that least that one component of the vector $\hat{p}$ is equal to 0).
+Then by the fact that$(\bar{p}\geq\hat{p}\geq\tilde{p}>0)$it concludes that all three vectors $\bar{p},\hat{p},\tilde{p}$ must be the same.
+Without losing generality, we may write $\hat{p}$ and $\tilde{p}$ as $\hat{p}=\left(\hat{p}_1,\ \cdots,\ \hat{p}_{n-1},\ \hat{p}_{n}\right)^T$, $\tilde{p}=\left(\tilde{p}_1,\ \cdots,\ \tilde{p}_{n-1},\ \tilde{p}_{n}\right)^T$ respectively,
+then we can express equation (10) by the following form
+\begin{eqnarray}
+  \left(\begin{array}{cc}
+    Z_{n-1} & \vec{\xi}^T\\
+    \vec{\zeta} & -1\\
+  \end{array}\right)\left(
+  \begin{array}{c}
+    \hat{p}'-\tilde{p}'\\
+    0\\
+  \end{array}\right)=\left(
+  \begin{array}{c}
+    \vec{f}'\\
+    \vec{f}_n\\
+  \end{array}\right)\label{11}
+\end{eqnarray}
+Which implies that $Z_{n-1}\left(\hat{p}'-\tilde{p}'\right)=\vec{f}'$, where $Z_{n-1}$ is the (n-1)-by-(n-1) principal sub matrix of the n-by-n matrix $\Pi^T-E$.\\
+Where $\hat{p}'=\left(\hat{p}_1,\ M^T,\ \hat{p}_{n-1}\right)^T$, $\tilde{p}'=\left(\tilde{p}_1,\ M^T,\ \tilde{p}_{n-1}\right)^T$, $\vec{f}'=\left(f_1,\ M^T,\ f_{n-1}\right)$,
+$\vec{\xi}^T=\left(\Pi_{n1},\ M^T,\ \Pi_{n,n-1}\right)^T$, $\vec{\zeta}^T=\left(\Pi_{1n},\ M^T,\ \Pi_{n-1,n}\right)^T$. \\
+From the argument above, we have that $\rm{det}\left(Z_{n-1}\right)\neq 0$, i.e., $Z_{n-1}$ is invertible.\\
+By equation (\ref{11}), we have that
+\begin{eqnarray}
+  \hat{p}'-\tilde{p}'=\left(Z_{n-1}\right)^{-1}\vec{f}'\label{12}
+\end{eqnarray}
+Now we define $|\vec{x}|=\max_{1\leq i\leq n-1}|x_i|$, by (\ref{12}) and the estimation (9), it follows that
+\begin{eqnarray}
+  \max_{1\leq i\leq n-1}|\hat{p}_i-\tilde{p}_i|\leq C\sum_{i=1}^{n}\left(\hat{e}_i-\tilde{e}_i\right)
+\end{eqnarray}
+where $C$ is a constant depending on $n$, $\Pi_{ij}$. By the fact that $\hat{p}_n=\tilde{p}_n=\bar{p}_n$, thus we have $|p_1-p_2|\leq|\hat{p}-\tilde{p}|\leq C\sum_{i=1}^{n}\left(\hat{e}_1-\tilde{e}_i\right)$,
+and the proof of the continuity is completed.\\
+\begin{rema}
+We also like to mention that the continuity for the solutions could be also proved by using the fact that the spectral radius less than 1 for any given its n-1 principal sub matrix of the matrix $\Pi^T$.
+\end{rema}
+\section{The Conclusion}
+
+The conclusion consists of two parts as summarized below.\\
+
+\subsection{The Mechanics and Property of Systemic Risk in an interbank network.}
+Based on the concept of "cleaning payment vector" concept initially introduced by Eisenberg and Noe (2001) for the financial system (or say, financial network) in an interbank network, in section 2, we discuss the mechanics of systemic risk¡¯s contagions related to two cases: The assets' recovery rate, and capital requirement. Then in Section 3, under the general regularity condition for the financial network, we discuss some new results for the existence, uniqueness, and continuity results which could be regarded as the fundamental supporting for the systemic risk measurement in terms of numerical analysis with simulations.
+
+\subsection{The Issue for the determination of the Liability Matrix}
+Finally we like to point out that in terms of practice in measuring systemic risk under the framework of banking systems through the concept of "cleaning payment vectors", the liability matrix plays a key role. However, due to the complexity of any banking systems for an given interbank network with missing date in the bottom level of network from the institute i to institute $j$ through $L_{ij}$, it is truly challenging issues in the practice. Here we give a brief discussion for the Determination of the Liability Matrix for Financial network.\\
+By following the same notation used above, for a given financial system, where for bank or financial institute  $i, j$ from $N (=1,2,3,\cdots,n):$
+we recall that$L_{ij}£ºi\longrightarrow j$ denotes the liability payment for to $j$, then in general, we know that The elements of the matrix $(\Pi_{ij})_{i,j=1,\cdots,N}$, which are essentially from the liability matrix $(\L_{ij})_{i,j=1,\cdots,N}$.
+Due to the complexity of financial data, it is hard to get all $L_{ij}$, but it is relatively to have the sum of the total liability payment amount, and the total receivable amounts, i.e.,\\
+$$\sum_{i=1}^{N}L_{ij}:=b_i^v and\  \sum_{i=1}^{N}L_{ij}^T:=b_i^c$$
+Plus, we have
+$$\sum_{i=1}^{N}b_i^c=\sum_{i=1}^{N} b_i^v$$
+By the fact the diagonal line is zero for the liability matrix, we need to determine the $n^2?n$ element of liability matrix. As we only know the condition for $2n-1$, this is a non-deterministic question, which would be solved by using relative entropy method, which has been used and discussed by Mistrulli (2011), Fang et al (1997) and the reference wherein.
+
+\begin{thebibliography}{99}
+
+\bibitem{Kaufman1994}
+Kaufman, G. G., 1994, Bank contagion: A review of the theory and evidence, Journal of Financial Services Research, 8(2), 123-150.
+\bibitem{Reidys2000}
+Kaufman, G. G., and K. E. Scott,  2003,  What is systemic risk, and do bank regulators retard or contribute to it? Independent Review, 7(3), 371-391.
+\bibitem{Eisenberg and Noe2001}
+Eisenberg, L., and T. H. Noe, 2001, Systemic risk in financial systems, Management Science, 47(2), 236-249.
+\bibitem{Reidys2003}
+Sorge, M., and K. Virolainen,  2006,  A comparative analysis of macro stress-testing methodologies with application to Finland, Journal of Financial Stability, 2(2), 113-151.
+\bibitem{Elsinger2006}
+Elsinger, H., A. Lehar, and M. Summer, 2006, Risk assessment for banking systems, Management Science, 52(9), 1301-1314.
+\bibitem{Elsinger et al2013}
+Elsinger, H., A. Lehar, and M. Summer, 2013, Network models and systemic risk assessments,  in J-P. Fouque and J. A. Langsam (editors), Handbook on Systemic Risk, Cambridge University Press, Chapter 11, P.287-305.
+\bibitem{Upper2011}
+Upper, C., 2011, Simulation methods to assess the danger of contagion in interbank networks, Journal of Financial Stability, 7, 111-125.
+\bibitem{Mistrulli2011}
+Mistrulli, P. E., 2011, Assessing financial contagion in the interbank market: Maximum entropy versus observed interbank lending patterns, Journal of Banking \& Finance, 15, 1114-1127.
+\bibitem{Upper and Wornn2001}
+Upper, C., and A. Wornn, 2001, Estimating bilateral exposures in the German Interbank market: Is there a Danger of Contagion?, European Economic Review, 8, 827-849.
+\bibitem{Cifuentes et al2005}
+Cifuentes, R., H. S. Shin, and G. Ferrucci, 2005, Liquidity risk and contagion, Journal of the European Economic Association, 3, 556-566.
+\bibitem{Ganthier et al2010}
+Ganthier, C., Z. Lehar, and M. Souissi, 2010, Macroprudential regulation and systemic capital requirements, Working paper, Bank of Canada.
+\bibitem{Fang et al1997}
+Fang, S.C., J. R. Rajasekra, J., and J. Tsao, 1997, Entropy optimization and mathematical programming, Kluwer Academic Publishers.
+\bibitem{Fouque and Langsam2013}
+Fouque, J-P., and J. A. Langsam, 2013, Handbook on Systemic Risk, Cambridge University Press.
+\bibitem{Ren et al2013}
+Ren, X.M., G. Yuan, and L. Liang, 2013, The Property of Network Models Systemic Risk related to Insolvency Contagion in an Interbank Network, Research report, Institute of Risk Management, Tongji University (Shanghai, China), P.1-14.
+\bibitem{Bisias et al2012}
+Bisias, D., M. flood, A. Lo, and S. Valavanis, 2012, A Survey of Systemic Risk analytics, Office of Financial Research Working Paper \# 0001, P.1-160.
+
+\end{thebibliography}
+
+\end{document}
