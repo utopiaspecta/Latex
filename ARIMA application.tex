@@ -1,0 +1,338 @@
+\documentclass[twoside]{cctart}
+\usepackage{headrule,vatola,amssymb}
+\usepackage{graphicx,multirow,bm}
+\usepackage{booktabs,dcolumn}%关于小数点对齐
+\newcolumntype{z}[1]{D{.}{.}{#1}}%关于小数点对齐
+\usepackage{tabularx}%关于表自动折行
+\usepackage{slashbox}%表格加斜线
+\usepackage{here}
+
+%\usepackage{footmisc,perpage}
+
+%=========================Page Format (此部分定义请勿修改)================================
+\setlength{\voffset}{-5mm} \headsep 0.3 true cm \topmargin 0pt
+\oddsidemargin 0pt \footskip 2mm \evensidemargin 0pt \textheight
+24.5 true cm \textwidth 16.5 true cm \setcounter{page}{1}
+\parindent 2\ccwd
+\nofiles
+
+\TagsOnRight\baselineskip 12pt
+
+\catcode`@=11 \long\def\@makefntext#1{\parindent 1em\noindent
+\hbox to 0pt{\hss$^{}$}#1} \catcode`\@=12
+
+\catcode`@=11
+\def\evenhead{}
+\def\oddhead{}
+\headheight=8truemm
+% \footheight=0pt
+\def\@evenhead{\pushziti
+  \vbox{\hbox to\textwidth{\rlap{\rm\thepage}\hfil{\evenhead}\llap{}}
+    \protect\vspace{2truemm}\relax
+    \hrule depth0pt height0.15truemm width\textwidth
+  }\popziti}
+\def\@oddhead{\pushziti
+  \vbox{\hbox to\textwidth{\rlap{}{\oddhead}\hfil\llap{\rm\thepage}}
+    \protect\vspace{2truemm}\relax
+    \hrule depth0pt height0.15truemm width\textwidth
+  }\popziti}
+\def\@evenfoot{}
+\def\@oddfoot{}
+\catcode`@=12
+
+\renewcommand{\baselinestretch}{1.2}
+\def\d{\displaystyle} \def\n{\noindent}
+\def\ST{\songti\rm\relax}
+\def\HT{\heiti\bf\relax}
+\def\FS{\fangsong\relax}
+\def\KS{\kaishu\relax}
+\def\sz{\small \zihao{-5}}
+\def\vs{\vspace{0.3cm}}
+\def\ay{\arraycolsep=1.5pt}
+
+\def\SEC#1#2#3{\vspace*{.2in} \begin{center}
+{\LARGE\zihao{3}\HT #1}\\[.2in]
+\zihao{4}\fangsong#2\\[.1in]
+\small\zihao{-5}#3 \end{center}}
+
+\def\ESEC#1#2#3{\vskip.2in \begin{center}
+{\Large \HT #1}\\[.2in]
+\normalsize #2\\[.1in]
+\footnotesize #3 \end{center}}
+
+\def\SUB#1{\vspace{.15in} \leftline{\large\bf\heiti\zihao{-4}#1}
+\vspace{.07in}}
+\def\sub#1{\leftline{\bf\heiti\zihao{5}#1}}
+
+\def\REFERENCE{\vspace*{.2in}
+{\noindent\bf\heiti\zihao{5}参考文献} \vspace*{.1in}}
+%=========================================================================
+
+\begin{document}
+
+%--------------------------页眉-------------------------------------
+%\def\evenhead{{\protect\small{\zihao{-5}\songti \hfill 系~统~ 工~程~ 理~论~与~实~ 践}
+%\hfill{\zihao{-5}\songti 第} \,33\,{\zihao{-5}\songti 卷}}}
+%\def\oddhead{{\protect{\zihao{-5}\songti 第}\small \,\,1\,{\zihao{-5}\songti 期}
+%\hfill {\small\zihao{-5}\songti{孙会霞,等:论文文题}
+% }\hfill}}
+
+%---------------------------首页页眉---------------------------------
+%\vspace*{-13mm} \thispagestyle{empty} \noindent \hbox to
+%\textwidth{\small{\zihao{-5}\songti 第}\,\,33\,{\zihao{-5}\songti
+%卷 第}\,\,1\,{\zihao{-5}\songti 期}\hfill {\zihao{5}
+%系统工程理论与实践}\hfill Vol.33, No.1} \vskip -0.2mm
+%\par\noindent
+%\hbox to \textwidth{\small 2013 {\zihao{-5}\songti 年}\,\,1
+%{\zihao{-5}\songti 月}\hfill Systems Engineering --- Theory \&
+%Practice\hfill Jan., 2013} \vskip -0.3mm
+%\par\noindent
+%\rule[2mm]{\textwidth}{0.5pt}\hspace*{-\textwidth}\rule[1.5mm]{\textwidth}{0.5pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\ziju{0.025} \vskip -7mm  \noindent {\small 文章编号:\
+%1000-6788(2013)01-0001-11 \qquad \qquad {中图分类号:}\ \ XXX % 中图分类号从《中国图书馆分类法》(第四版)中查得。
+%\qquad\qquad{文献标志码:\ \ A}}
+
+%-----------------------脚注--------------------------------------------------
+%\footnotetext{{\HT 收稿日期:}\ 2011-11-14} \footnotetext{{\HT
+%资助项目:}\ 国家自然科学基金(71102118)}
+\footnotetext{{\HT
+作者简介:}\ 汪蓉(1991--),女,江苏丹阳人,硕士研究生,研究方向:
+金融工程. wangrong@pairyo.com}
+
+%---------------------题目、作者、单位、摘要、关键词, 中图分类号(必须提供)------------------
+%\SEC{中文题目}%{作者}{单位}
+\SEC{ARIMA模型的优化及其在鸡蛋期货价格预测中的应用}
+{汪蓉$^{1}$, 袁先智$^{2}$} {(1. 苏州大学\ 金融工程研究中心, 苏州
+; 2. 苏州大学\ 金融工程研究中心, 苏州)}
+
+\vskip.05in {\narrower\zihao{5}\fangsong\noindent {\heiti 摘\quad
+要}\ \
+期货具有价格发现的功能, 所以预测期货价格是十分有意思并且有意义的工作. 文章针对鸡蛋期货价格实证检验发现, ARIMA模型不能充分提取价格信息, 因此给出的预测参考价值低. 在对市场中可能提高预测精度的变量进行Granger因果关系检验, 并对因变量关于该变量进行处理后再运用ARIMA模型, 预测误差明显减小. 基于此, 文章提供了一个优化的ARIMA模型的应用.
+
+
+\vskip.05in \noindent {\heiti 关键词}\ \
+ARIMA模型\quad 鸡蛋期货\quad Granger因果关系检验\quad 价格预测
+
+}
+
+
+
+%%%%%%%%%%%%%%%英文部分%%%%%%%%%%%%%%%%%%%%%%%
+%\ESEC{英文题目}{作单}{单位}
+\ESEC{ARIMA model's optimization and it's appliation in forecasting egg futures price}
+{Wang Rong$^{1}$, \ Jiuhong Yu$^{2}$} {(1. Center for Financial Engineering, Soochow University, Suzhou, China; \\2. %\Institute of Risk Management, Department of Mathematics, Tongji University, Shanghai, China%
+Center for Financial Engineering, Soochow University, Suzhou, China)}
+
+
+
+\vskip.05in \rm \noindent {\narrower\small {\bf Abstract}\ \
+Futures  has function of price-discovery. Therefore it is an interesting and meaningful work to predict futures prices. In this article we applicate the ARIMA moedl to egg futures prices directly first. And we find that ARIMA model can not fully extract the information from the prices observed ,thus the prediction offer less reference value. Do Granger causality test to the variables in the market which may improve the prediction accuracy of the futures price, and process the futures price before using ARIMA model. Based on this method, we provide an optimized application of ARIMA model  and the forecasting errors are significantly reduced.
+
+
+
+\vskip.05in \noindent{\bf Keywords}\ \
+ ARIMA model\quad egg futures\quad Granger causality test\quad price forecast
+
+
+}
+
+
+\normalsize \normalsize \abovedisplayskip=2.0pt plus 2.0pt minus
+2.0pt \belowdisplayskip=2.0pt plus 2.0pt minus 2.0pt \baselineskip
+15pt
+
+%%%%%%%%%%%%%%%%%%%%%%%注意事项%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 全文所有的标点符号(包括括号、冒号、分号、逗号、句号等)都用`` 英文"中的标点符号, 即`` 半角"加空格.
+
+%%%%%%%%%%%%%%%%%%%%%%正文%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\SUB{1\ \ 引言}%一级标题
+价格预测是永恒的话题, 市场变幻莫测, 即使在一段时间可以捕捉到先行指标进行较为准确的预测, 但是这样的套利机会很快会被市场消化.\\
+
+我国的鸡蛋期货于2013年11月8日在大连商品交易所推出, 目前关于鸡蛋期货的研究还很少. 美国曾经推出鸡蛋期货, 但是随着鸡蛋的价格趋于稳定, 套保需求大幅下降. Miracle(1972)通过对美国鸡蛋期货市场1940-1966的研究发现套期保值交易的数量占期货市场交易的大部分, 并且提出价格波动的减小会导致在鸡蛋期货市场的投机者流失,进而更加降低了套保需求. 美国鸡蛋期货市场交易量在1961年后开始呈现下滑趋势, 最终CME于1982年9月停止了鸡蛋期货交易. 中国的鸡蛋期货于推出不到一年, 交易活跃, 年化波动率最高时近$30\%$. 不排除在若干年后我国的鸡蛋期货市场因为鸡蛋价格变得可预测等原因而交易减少的可能, 就目前而言, 我国鸡蛋期货市场发展良好. 因此, 借鉴曾经基于美国对鸡蛋期货市场的研究成果, 对我国鸡蛋期货产品进行价格预测, 对于鸡蛋期货市场的套期保值者和投机者, 是十分必要的.\\
+
+Fama和French(1987)把关于大宗商品期货价格的较为流行的研究观点分为两类: 第一类认为即期价格和期货价格的差异是由于用于存储大宗商品的本金利息损失、仓储成本和存货的便利收益率.第二类观点把期货价格分割为期望的风险溢价和期货的即期价格的预测进行研究.\\
+
+差分自回归移动平均模型(Autoregressive Integrated Moving Average Model, 简记为ARIMA), 是Box和\\Jenkins于70年代初提出的时间序列预测方法. ARIMA模型已经被用于大宗商品价格的预测, 如Weiss(2000), Chinn, LeBlanc, Coibion(2001)和Buchanan, Hodges, Theis(2001), 均得到较好的结果. 但是Bessler, David, Brandt(1987)经研究认为ARIMA 模型关于畜牧类大宗商品价格不能提供好的预测.\\
+
+本文基于第二类观点, 通过ARIMA模型充分提取已有的鸡蛋期货产品的每日市场价格的信息进行提前一天的预测. 不同于以往的ARIMA模型的应用, 在进行时间序列分析之前, 首先对市场中其他可能提高预测精度的变量进行Granger因果关系检验, 并对因变量关于该变量进行处理.  \\
+%\sub{1.1\ \ }二级标题命令
+%{\HT 定理1}\ \  {\HT 证明}\ \
+
+
+\SUB{2\ \ ARIMA(p,d,q)模型}%一级标题
+记$y_t$为期货产品在t时刻的价格, 根据Box, Jenkins, Reinsel(2013) 其一般的ARIMA模型如下:
+\begin{equation}
+\phi(B)(1-B)^d y_t=\theta(B)\varepsilon_t
+\end{equation}
+其中$\phi(B)=1-\sum_{i=1}^{p}\phi_i B^i,\theta(B)=1-\sum_{j=1}^{q}\theta_j B^j,$ B是滞后算子: $B^ky_t=y_{t-k}$, $\varepsilon_t$是独立同分布的随机变量序列, 满足$E(\varepsilon_t)=0, Var(\varepsilon_t)=\sigma_{\varepsilon}^2>0.$
+\\ 基于上述模型, 我们作了以下两种应用：\\
+A: 关于$y_t$的对数收益率进行拟合
+\begin{equation}
+\phi(B)(1-B)^d ln\left(\frac{y_t}{y_{t-1}}\right)=\theta(B)\varepsilon_t
+\end{equation}
+B: 引入与$y_t$相关的变量$x_t$
+\begin{equation}
+\phi(B)(1-B)^d ln(y_t-\alpha x_{t-1})=\theta(B)\varepsilon_t
+\end{equation}
+其中, $\alpha$ 为常数.\\
+
+\SUB{3\ \ 实证}%一级标题
+
+大宗商品的即期价格普遍被认为难以获得或者难以直接观测. 通过鸡蛋的市场价格在直观上是合理的想法, 但是地域价格差异和不同市场的价格差异都是较难处理的因素, 基于此, 本文使用的数据均来自期货市场(大连商品交易所), 且主要研究对象为交易量较大的期货产品,交易量和成交金额较小的产品不在考虑范围内. 另外, 避免特殊性，选取当日最高价和最低价的平均值为研究对象。因为鸡蛋期货上市时间不到一年, 数据有限, 所选用的数据为每日数据. 时间序列分析时暂不考虑季节因素.\\
+
+\sub{3.1\ 基于ARIMA模型的JD1409价格的动态预测\ }
+便于比较，首先直接针对JD1409用ARIMA模型进行预测.为充分利用已有价格信息,减小误差, 取日对数收益率
+\begin{equation}
+u_t=ln\left(\frac{y_t}{y_{t-1}}\right)
+\end{equation}
+为变量进行时间序列分析. 选取对数收益率为研究对象限制了模型只能进行提前一天的预测, 但是这刚好与引入ML1409的ARIMA模型也只能进行提前一天的预测相对应.\\
+%%=============================================
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{nonml.png} \\
+{\bf \sz 图1\ JD1409-ARIMA(2,1,1)(n=128)模型诊断图}
+\end{center}
+\end{figure}
+如图1所示, $n=128$时ARIMA模型的诊断结果: 标准化残差(Standardized Residuals) 没有明显的波动性集聚; 残差的自相关函数(ACF)没有显著的自相关性; Ljung-Box统计量的$p$值在$lag>4$时较小, 表明数据中还有未被模型提取的信息(Ljung and Box 1978). 基于此, 结合3.1中的Granger 因果关系检验,引入豆粕期货ML1409的价格对鸡蛋期货JD1409价格是有必要并且合理的. \\
+%%%%%%%%%%%%%%%%%%%%插入表格%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}{\sz
+{\textbf{表1\ \  JD1409-ARIMA模型预测结果}}\\
+\begin{tabular}{lccccccc} \toprule
+\   n &  BIC &  Order & JD1409(市场价格) &  ARIMA(预测均值) & 误差& Low$(80\%)$ & High$(80\%)$ \\
+\hline
+ 120  &-829.53  & (2,1,1)& 5065.0 & 5050 &0.30\% &	5008 &5092 \\
+ 122  &-842.51  & (2,1,1)&5104.5 & 5029& 1.48\% &	4987 & 5071  \\
+ 124  &-854.25  & (2,1,1)&5184.5  &5192  & 0.14\% &	5148 & 5236   \\
+ 126  &-870.54  & (2,1,1)&5240.0  &5217   &0.44\% &	5173  & 5261  \\
+ 128  &-883.09  & (2,1,1)&5222.0  &5199  & 0.44\% &	5155  & 5243 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+表1给出了在 $t=120,122,124,126,128$时,分别在R环境中由BIC准则选择出的最优的ARIMA模型对$t=121,123,125,127,129$的预测结果. 排除偶然因素, 与日均波动均值$0.54\%$ 相比较,误差较大, 真实值虽然在$80\%$ 预测区间内, 但是预测具有较低的参考价值. 从图1看到,未引入ML1409的ARIMA模型没有能够提取数据的全部信息,因此有理由相信存在更好的模型来拟合并预测JD1409的价格.\\
+
+\sub{3.2\ Granger因果关系检验\ }
+
+从成本因素看，鸡蛋价格主要受鸡苗, 玉米和豆粕影响,据农业部统计玉米占鸡蛋生产成本的$42\%-46\%$, 与鸡蛋的相关性系数为0.74. 豆粕占鸡蛋成本的$14\%-17\%$, 与鸡蛋的相关系数为0.59. 豆粕期货和玉米期货产品分别在2000年和2004年已经上市,是较成熟的期货产品. 但是我们发现对于同时间到期的期货产品, 鸡蛋期货产品的价格与豆粕期货产品价格有更高的相关性. 所以期货下文先从豆粕期货板块中选择与鸡蛋期货存在因果关系的期货产品. 虽然经济意义上豆粕价格影响鸡蛋的成本价格,避免主观性, 利用Granger因果关系检验来分析豆粕具体的期货产品和鸡蛋期货产品的因果关系. Granger因果关系检验之前首先要检验时间序列的平稳性. 通过Augmented Dickey–Fuller(ADF)检验来判断是否存在单位根, 从而判别其平稳性. \\
+原假设：$H_0 :\rho_0=1$,即序列存在单位根.\\
+备择假设：$H_1 :|\rho_0|< 1$,即序列不存在单位根。\\
+当$H_0$为真的概率$p$小于显著性水平0.05时, 拒接原假设. 分析鸡蛋期货JD1409合约,JD1405 合约, 豆粕期货ML1405合约, ML1409合约的滞后差分项时间序列，ADF 检验结果值均为$p=0.01$, 小于给定显著性水平，因此拒绝原假设,认为JD1409合约,JD1405合约, 豆粕期货ML1405合约, ML1409合约的一阶滞后差分项是平稳的,能进行Granger因果关系检验.\\
+
+Granger因果关系检验的基本思想是检验在给定经济领域中两个时间序列${Y_t}$ 和${X_t}$ 之间是否存在预测关系. 如果$X$的历史数据有助于预测$Y$ 的当前值,那么$x$是$y$的Granger原因(Granger 1969). \\
+建立回归模型如下:\\
+\begin{equation}
+y_t=c_1+\sum_{i=1}^{p}\alpha_i y_{t-i}+\sum_{j=1}^{q}\beta_j x_{t-j}+\varepsilon_t,t=1,2,\cdots,n
+\end{equation}
+与\\
+\begin{equation}
+y_t=c_1+\sum_{i=1}^{p}\alpha_i y_{t-i}+\varepsilon_t, t=1,2,\cdots,n
+\end{equation}
+原假设：$H_0 :\beta_1=\beta_2=\cdots=\beta_q=0$,即$x$不是$y$的Granger 原因.\\
+备择假设：$H_1 :\beta_j\neq 0(j=1,2,\cdots,q)$\\
+
+检验统计量$E=\frac{[RSS(p)-RSS(q,p)]q^{-1}}{RSS(q,p)(n-p-q-1)^{-1}}~F(q,n-p-q-1)$，其中$RSS(p), RSS(q,p), n$分别为两个模型的普通最小二乘估计的残差平方和以及样本容量. 对鸡蛋期货JD1409合约(下文简称JD1409)和JD1405 合约(下文简称JD1405), 豆粕期货ML1405合约(下文简称ML1409)和ML1409 合约(下文简称ML1409)进行时间序列的单向Granger因果关系检验, 结果如表1所示.
+\begin{center}{\sz
+{\textbf{表2\ \  JD1409合约的单向Granger因果关系检验表}}\\
+\begin{tabular}{lcccc} \toprule
+  原假设$H_0$\                   \ & F值(滞后期1) &  p值(滞后期1) &  结论 \\
+\hline
+ JD1405不是导致JD1409变化的原因 & 7.0640     & 0.0089  & 拒绝\\
+ ML1405不是导致JD1409变化的原因  & 0.5059   & 0.4783   &接受\\
+ ML1409不是导致JD1409变化的原因  & 4.2415   & 0.0417   &拒绝\\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+由表2中的结论可推断JD1405和ML1409是JD1409的Granger原因. 考虑到JD1405在5月将会交割, 无法在5月之后提供价格对JD1409进行预测, 所以下文仅从ML1409是JD1409的Granger原因出发进行回归分析. \\
+
+\sub{3.3\ 基于ARIMA模型引入ML1409后的JD1409动态预测\ }
+
+记 $\{y_t\}$是由JD1409从2013年11月8日到2014年5月23日的价格构成的时间序列, $t=1,2,\cdots, 132$. $\{x_t\}$是由ML1409从2013年11月8 日到2014年5月23 日的价格构成的时间序列, $t=1,2,\cdots, 132$. 在3.1中最优的均为ARIMA(2,1,1), 推测$\{y_t\}$具有二级自回归性; 并且在R环境中对${y_t}$进行ACF分析显示其对一阶和二阶滞后项的回归系数都较显著, 因此建立回归模型如下：
+\begin{equation}
+y_t=\alpha x_{t-1}+\beta_1 y_{t-1}+\beta_2 y_{t-2}+\varepsilon_t, t=1,2,\cdots,n
+\end{equation}
+通过线性回归最小二乘获得线性拟合模型从而获得对应的$\alpha$. 取不同的n值, 将会得不到不同的$\alpha$ 值,下文中将对$\{y_t-\alpha x_{t-1}\}$ 进行时间序列分析.\\
+由求得的$\alpha$, 对给定的n, 对$\{y_t-\alpha x_{t-1}\},t=1,2,\cdots,n$进行时间序列分析, 在R环境中选择最优的ARIMA模型.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{mlinclude.png}\\
+{\bf \sz 图2\ 引入ML1409的JD1409-ARIMA(2,2,1)(n=128)模型诊断图}
+\end{center}
+\end{figure}
+如图2所示, $t=128$时引入ML1409后ARIMA模型的诊断结果: 标准化残差(Standardized Residuals)没有明显的波动性集聚; 残差的自相关函数(ACF)没有显著的自相关性; Ljung-Box 统计量的$p$ 值比较大, 表明模型几乎提取了数据中的全部信息, 剩余的仅仅是白噪声(Ljung and Box 1978). 此外, 模型对于JD1409的实际价格的拟合表现也很好,见图3.\\
+%%%%%%%%%%%%%%%%%%%%插入图片%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{vs.png}\\
+{\bf \sz 图3\ 引入ML1409的ARIMA模型拟合效果图}
+\end{center}
+\end{figure}
+
+同样的, $n=120,122,124,126,128$时, 对以$ln(y_t-\alpha x_{t-1})$ 为研究对象, 选择最优的ARIMA模型对$n=121,123,125,127,129$时的价格进行预测.
+%%%%%%%%%%%%%%%%%%%%插入表格%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\multirow{2}*{活动名称}%表格行中的内容上下居中.
+%\cmidrule(r){3-4}%表格划线中间断开
+\begin{center}{\sz
+{\textbf{表3\ \  引入ML1409的JD1409-ARIMA模型预测结果}}\\
+\begin{tabular}{lccccccc} \toprule
+\   n &   $\alpha$ &  BIC &  JD1409(市场价格) &  ARIMA(预测均值) & 误差& Low$(80\%)$ & High$(80\%)$ \\
+\hline
+ 120  & 0.07883   & -821.55  & 5065.0 & 5055  & 0.20\% &5019  & 5090 \\
+ 122  & 0.07000  & -833.63  & 5104.5 & 5079& 0.50\% &5044 & 5115  \\
+ 124  & 0.08372   & -843.7   & 5184.5  &5173  & 0.22\% &5136 & 5212   \\
+ 126  & 0.07923   &  -861.08  & 5240.0  &5223  &0.32\% &5187  & 5261  \\
+ 128  & 0.08052  &  -864.61  & 5222.0  &5217  & 0.10\% &5179  & 5274 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+表3给出了在 $n=120,122,124,126,128$时,选择出的最优的ARIMA模型对$t=121,123,125,127,129$的预测结果. 排除偶然因素, 与日均波动均值$0.54\%$相比较,误差在可接受范围, 真实值均在$80\%$预测区间内, 结果可靠. 再与表1比较, 引入MD1409的JD1409-ARIMA模型预测结果误差更小,置信区间在同等置信水平下也更小, 是更优的预测结果. 不难发现, $t=N$时的价格已知, 就可以对$t=N+1$时的价格给出预测; 即当有更多的价格信息获得时, 模型可以对期货价格进行动态预测.\\
+
+
+\SUB{4\ \ 结论}%一级标题
+
+文章提出了可动态预测期货价格的方法, 并针对鸡蛋期货产品JD1409进行验证. 不同于以往的ARIMA\\
+模型的应用, 首先对市场中可能提高预测精度的变量进行Granger 因果关系检验, 并对因变量处理后进行时间序列分析. 实证结果显示, 引入具有Granger因果关系的变量后研究对象的预测准确度明显增强,并且预测值的$80\%$的置信区间更小. 在以后的研究中, 还可以从更广的范围寻找变量进行Granger因果关系检验, 优化对因变量的处理, 提高拟合度和预测精度.\\
+
+
+%%%%%%%%%%%%%%%%%%%%%参考文献%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\REFERENCE
+{\small \baselineskip 12pt
+%为反映论文的学术水平和创新程度,请主要引用最近3年以内发表的文献(最好引用期刊类文献).
+%作者可在本刊网站: http://www.sysengi.com免费下载查阅创刊以来的所有论文全文.
+%参考文献列表必须按正文中引用的先后顺序排序,所有被引用的文献须在正文中标明引用位置:
+%不做句子成份的文献以上角标形式标引,直接用$^{[1]}$形式标引即可,做句子成份的文献则与正文平排.
+%对于中外文的个人著者,一律采用姓前名后的著录方式.用汉语拼音书写的中国著者姓用全拼,名用缩写;欧美著者的名用缩写字母;缩写名后不用缩写点,
+%例如: Zhang J T, Calms R B. 作者数量多于三个人时，在第三个作者后面加``, 等" 或``, et al". 作者名之间用逗号分隔,不用``and".
+\REF{[1]}
+Box, George EP, Gwilym M Jenkins, and Gregory C Reinsel. Time series analysis: forecasting and control. John Wiley \& Sons, 2013.
+%期刊著录格式
+\REF{[2]}
+Miracle, Diane S. "THE EGG FUTURES MARKET: 1940 TO 1966f." (1972).
+ %Kalman, Rudolph Emil. A new approach to linear filtering and prediction problems[J]. Journal of basic Engineering 82.1 (1960): 35-45.
+\REF{[3]}
+Bessler, David A, and Jon A Brandt. "Forecasting livestock prices with individual and composite methods." Applied Economics 13.4 (1981): 513-522.
+\REF{[4]}
+Granger C W J. Investigating causal relations by econometric models and cross-spectral methods[J]. Econometrica: Journal of the Econometric Society, 1969: 424-438.
+\REF{[5]}
+Ljung, Greta M, and George EP Box. "On a measure of lack of fit in time series models." Biometrika 65.2 (1978): 297-303.
+\REF{[6]}
+Fama E F, French K R. Commodity futures prices: Some evidence on forecast power, premiums, and the theory of storage[J]. Journal of Business, 1987: 55-73.
+\REF{[7]}
+Larson A B Price Prediction on the Egg Futures Market[J]. Food Research Institute Studies, 1967.
+\REF{[8]}
+Rockwell C Normal Backwardation, Forecasting and the Returns to Commodity Futures Traders[J]. Food Research Institute Studies, 1967, 7(1967): 107.130.
+\REF{[9]}
+Weiss, E R I C "Forecasting commodity prices using ARIMA." Technical Analysis of Stocks \& Commodities 18.1 (2000):18-19.
+\REF{[10]}
+Chinn, Menzie David, Michael LeBlanc, and Olivier Coibion. "The predictive characteristics of energy futures: Recent evidence for crude oil, natural gas, gasoline and heating oil." Natural Gas, Gasoline and Heating Oil (October 2001). UCSC Economics Working Paper 490 (2001).
+\REF{[11]}
+Buchanan, W K, P Hodges, and J Theis. "Which way the natural gas price: an attempt to predict the direction of natural gas spot price movements using trader positions." Energy economics 23.3 (2001): 279-293.
+\REF{[12]}
+Larson, Arnold B. "Price Prediction on the Egg Futures Market." Food Research Institute Studies (1967).
+\REF{[13]}
+Roy, Sujit K., and Phillip N. Johnson. Econometric Models of Cash and Futures Prices of Shell Eggs. No. 158593. United States Department of Agriculture, Economic Research Service, 1974.
+}
+
+
+\end{document}
